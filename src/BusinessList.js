@@ -28,8 +28,7 @@ export default class BusinessList extends Component {
 	}
 	render() {
 		return (
-			<div style={{display: 'flex', justifyContent: 'center',
-		alignItems: 'center', flexDirection: 'column'}}>
+			<div style={{display: 'flex', justifyContent: 'center', marginTop: '10px', alignItems: 'center', flexDirection: 'column'}}>
 				{this.renderBusinesses()}
 			</div>
 		)

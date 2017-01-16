@@ -9,6 +9,10 @@ export default class SearchBar extends Component {
 			businesses: []
 		}
 	}
+	handleFormSubmit(e) {
+		e.preventDefault()
+		this.props.handleSubmit(e, this.state.termText, this.state.locationText)
+	}
 	handleChange(event) {
 		if(event.target.name === 'termText'){
 			this.setState({
@@ -23,7 +27,7 @@ export default class SearchBar extends Component {
 	render() {
 		return (
 			<div style={styles.container}>
-				<form onSubmit={this.props.handleSubmit.bind(this)} style={styles.searchBar}>
+				<form onSubmit={this.handleFormSubmit.bind(this)} style={styles.searchBar}>
 					<div style={styles.searchInput}>
 						<legend style={styles.legendStyle}>Find</legend>
 						<input name='termText' placeholder='search...' value={this.state.termText} style={styles.searchText} onChange={this.handleChange.bind(this)} type='text'/>
