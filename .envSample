@@ -1,0 +1,12 @@
+This file is a template for making a .env file for the yelp api keys
+
+Instructutions:
+1 - Make a copy of this file in the root of this repo and rename it to .env
+2 - In the .env file, enter all the yelp secret key information
+3 - run the server to get yelp data
+
+
+consumerKey=
+consumerSecret=
+token=
+tokenSecret=
