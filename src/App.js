@@ -10,15 +10,10 @@ class App extends Component {
       businesses: []
     }
   }
-  handleSubmit(e) {
-		var self = this;
+  handleSubmit(e, term, location) {
 		e.preventDefault();
-		axios.get('http://107.170.197.15/yelpSearch', {
-			params: {
-				term: 'india',
-				location: 'san francisco'
-			}
-		})
+    var self = this;
+		axios.get('http://107.170.197.15/yelpSearch', { params: { term, location } })
 		.then(function(data) {
 			self.setState({
 				businesses: data.data.businesses
@@ -32,10 +27,10 @@ class App extends Component {
           Yelp Search
           <img style={{width: '100px', height: '100px'}}src='http://static.wixstatic.com/media/324cb8_a99ecf6eb33346f598790d046671e7e8.png'/>
         </div>
-        <p className="App-intro">
+        <div className="App-intro">
           <SearchArea handleSubmit={this.handleSubmit.bind(this)}/>
           <BusinessList businesses={this.state.businesses}/>
-        </p>
+        </div>
       </div>
     );
   }
