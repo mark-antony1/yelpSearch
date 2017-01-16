@@ -31,8 +31,8 @@ var yelp = new Yelp({
 
 // this get request is expecting an object named search with the properties term and location
 app.get('/yelpSearch', function(req, res) {
-  var term = req.body.search.term;
-  var location = req.body.search.location;
+  var term = req.query.term;
+  var location = req.query.location;
 
   yelp.search({ term: term, location: location })
   .then(function (data) {
@@ -43,4 +43,8 @@ app.get('/yelpSearch', function(req, res) {
     console.error(err);
     res.send(err)
   });
-})
+});
+
+app.listen(3000, function() {
+  console.log('listening on port 3000!')
+});
