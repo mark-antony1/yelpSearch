@@ -20,7 +20,6 @@ class App extends Component {
 			}
 		})
 		.then(function(data) {
-			console.log(data.data.businesses)
 			self.setState({
 				businesses: data.data.businesses
 			})
