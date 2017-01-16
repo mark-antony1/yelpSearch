@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 export default class SearchBar extends Component {
 	constructor() {
@@ -7,6 +6,7 @@ export default class SearchBar extends Component {
 		this.state = {
 			termText: '',
 			locationText: '',
+			businesses: []
 		}
 	}
 	handleChange(event) {
@@ -20,20 +20,10 @@ export default class SearchBar extends Component {
 			})
 		}
 	}
-	handleSubmit(e) {
-		e.preventDefault();
-		axios.get('/yelpSearch', {
-			term: 'india',
-			location: 'san francisco'
-		})
-		.then(function(data) {
-			console.log('data',data)
-		})
-	}
 	render() {
 		return (
 			<div style={styles.container}>
-				<form onSubmit={this.handleSubmit.bind(this)} style={styles.searchBar}>
+				<form onSubmit={this.props.handleSubmit.bind(this)} style={styles.searchBar}>
 					<div style={styles.searchInput}>
 						<legend style={styles.legendStyle}>Find</legend>
 						<input name='termText' placeholder='search...' value={this.state.termText} style={styles.searchText} onChange={this.handleChange.bind(this)} type='text'/>
