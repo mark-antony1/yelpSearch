@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import jsonp from 'jsonp';
-import Yelp from 'yelp';
 import axios from 'axios';
-const yelp = require('yelp-fusion');
-
-const client = yelp.client('ATlKG7GSB1VDOQvV7JJSnuDhDoiqNiEXTaLTqZcWcBqcMCBCZ_XhMjQQoFOR3tEQEN6h-f_kjWCC1QofPJENOrLt29kcH1l-hwVR_yJJHIgvRgdLCLftzqiGEgN8WHYx');
 
 export default class SearchBar extends Component {
 	constructor() {
@@ -27,15 +22,13 @@ export default class SearchBar extends Component {
 	}
 	handleSubmit(e) {
 		e.preventDefault();
-		const { termText, locationText } = this.state
-		client.search({
-			term:'Four Barrel Coffee',
-			location: 'san francisco, ca'
-		}).then(response => {
-			console.log(response.jsonBody.businesses[0].name);
-		}).catch(e => {
-			console.log(e);
-		});
+		axios.get('/yelpSearch', {
+			term: 'india',
+			location: 'san francisco'
+		})
+		.then(function(data) {
+			console.log('data',data)
+		})
 	}
 	render() {
 		return (

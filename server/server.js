@@ -3,7 +3,7 @@ var app = require('express')();
 var request = require('request');
 var path = require('path');
 var bodyParser = require('body-parser');
-require('dotenv').config();
+// require('dotenv').config();
 
 app.use(bodyParser.json());
 
