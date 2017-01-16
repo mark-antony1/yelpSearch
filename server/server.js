@@ -36,7 +36,7 @@ app.get('/yelpSearch', function(req, res) {
 
   yelp.search({ term: term, location: location })
   .then(function (data) {
-    console.log(data);
+    console.log('datahere');
     res.send(data);
   })
   .catch(function (err) {
@@ -47,4 +47,5 @@ app.get('/yelpSearch', function(req, res) {
 
 app.listen(3000, function() {
   console.log('listening on port 3000!')
+  console.log('propccx', process.env.tokenSecret)
 });

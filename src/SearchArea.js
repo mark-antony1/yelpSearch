@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import jsonp from 'jsonp';
-import Yelp from 'yelp';
-import axios from 'axios';
-const yelp = require('yelp-fusion');
-
-const client = yelp.client('ATlKG7GSB1VDOQvV7JJSnuDhDoiqNiEXTaLTqZcWcBqcMCBCZ_XhMjQQoFOR3tEQEN6h-f_kjWCC1QofPJENOrLt29kcH1l-hwVR_yJJHIgvRgdLCLftzqiGEgN8WHYx');
 
 export default class SearchBar extends Component {
 	constructor() {
@@ -12,6 +6,7 @@ export default class SearchBar extends Component {
 		this.state = {
 			termText: '',
 			locationText: '',
+			businesses: []
 		}
 	}
 	handleChange(event) {
@@ -25,22 +20,10 @@ export default class SearchBar extends Component {
 			})
 		}
 	}
-	handleSubmit(e) {
-		e.preventDefault();
-		const { termText, locationText } = this.state
-		client.search({
-			term:'Four Barrel Coffee',
-			location: 'san francisco, ca'
-		}).then(response => {
-			console.log(response.jsonBody.businesses[0].name);
-		}).catch(e => {
-			console.log(e);
-		});
-	}
 	render() {
 		return (
 			<div style={styles.container}>
-				<form onSubmit={this.handleSubmit.bind(this)} style={styles.searchBar}>
+				<form onSubmit={this.props.handleSubmit.bind(this)} style={styles.searchBar}>
 					<div style={styles.searchInput}>
 						<legend style={styles.legendStyle}>Find</legend>
 						<input name='termText' placeholder='search...' value={this.state.termText} style={styles.searchText} onChange={this.handleChange.bind(this)} type='text'/>
