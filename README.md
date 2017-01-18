@@ -6,5 +6,5 @@ git init
 git clone https://github.com/15chrjef/yelpSearch/edit/master/README.md <folder name>
 cd <folder name>
 npm start
- 
+  
  
